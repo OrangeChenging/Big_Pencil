@@ -1,0 +1,68 @@
+public main
+main proc near
+
+key= dword ptr -420h
+input_code= byte ptr -400h
+code= byte ptr -0Ah
+i= dword ptr -4
+
+push    rbp
+sub     rsp, 440h
+lea     rbp, [rsp+80h]
+call    __main
+mov     dword ptr [rbp+3C0h+code], 0
+mov     word ptr [rbp+3C0h+code+4], 0
+lea     rax, [rbp+3C0h+input_code]
+mov     edx, 3E8h
+mov     r8, rdx         ; Size
+mov     edx, 0          ; Val
+mov     rcx, rax        ; void *
+call    memset
+mov     [rbp+3C0h+key], 1Eh
+mov     [rbp+3C0h+key+4], 1Ah
+mov     [rbp+3C0h+key+8], 64h 
+mov     [rbp+3C0h+key+0Ch], 8
+mov     [rbp+3C0h+key+10h], 32h 
+mov     [rbp+3C0h+i], 0
+
+mov     eax, [rbp+3C0h+i]
+cdqe
+lea     rdx, aAbcde     ; "abcde"
+movzx   eax, byte ptr [rax+rdx]
+sub     eax, 61h ; 'a'
+mov     edx, eax
+mov     eax, [rbp+3C0h+i]
+cdqe
+mov     [rbp+rax+3C0h+code], dl
+mov     eax, [rbp+3C0h+i]
+cdqe
+movzx   eax, [rbp+rax+3C0h+code]
+mov     edx, eax
+mov     eax, [rbp+3C0h+i]
+cdqe
+mov     eax, [rbp+rax*4+3C0h+key]
+add     eax, edx
+mov     edx, eax
+mov     eax, [rbp+3C0h+i]
+cdqe
+mov     [rbp+rax+3C0h+code], dl
+mov     eax, [rbp+3C0h+i]
+cdqe
+movzx   eax, [rbp+rax+3C0h+code]
+mov     edx, 1Ah
+cbw
+idiv    dl
+movzx   eax, ah
+mov     edx, eax
+mov     eax, [rbp+3C0h+i]
+cdqe
+mov     [rbp+rax+3C0h+code], dl
+mov     eax, [rbp+3C0h+i]
+cdqe
+movzx   eax, [rbp+rax+3C0h+code]
+add     eax, 61h ; 'a'
+mov     edx, eax
+mov     eax, [rbp+3C0h+i]
+cdqe
+mov     [rbp+rax+3C0h+code], dl
+add     [rbp+3C0h+i], 1
