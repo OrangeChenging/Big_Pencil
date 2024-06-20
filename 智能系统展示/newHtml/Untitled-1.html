@@ -1,40 +1,82 @@
-String html="
 <!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width,initial-scale=1,user-scalable=no'>
+    <title>WiFi Lamp</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+            /* 背景色 */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            color: #fff;
+            /* 文字颜色 */
+            font-size: 30px;
+            background-color: #4CAF50;
+            /* 表单背景色 */
+            padding: 20px;
+            border-radius: 10px;
+            /* 表单圆角 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* 表单阴影 */
+        }
+
+        input[type="submit"] {
+            border: none;
+            /* 移除边框 */
+            background-color: #388E3C;
+            /* 按钮背景色 */
+            color: #fff;
+            /* 按钮文字颜色 */
+            font-size: 20px;
+            /* 按钮文字大小 */
+            width: 200px;
+            /* 增加按钮宽度 */
+            height: 60px;
+            /* 按钮高度 */
+            padding: 0;
+            /* 移除内边距 */
+            cursor: pointer;
+            /* 鼠标悬停时显示指针手势 */
+            border-radius: 30px;
+            /* 椭圆形按钮 */
+            transition: all 0.3s ease;
+            /* 平滑过渡效果 */
+            text-align: center;
+            /* 文本居中 */
+            line-height: 60px;
+            /* 行高与按钮高度一致，确保文本垂直居中 */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4CAF50;
+            /* 鼠标悬停时按钮颜色 */
+        }
+
+        input[type="submit"]:focus {
+            outline: none;
+            /* 移除聚焦时的轮廓 */
+        }
+    </style>
 </head>
-<style>
-    form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        height: 60vh;
-        color: #4cc9f0;
-        font-size: 30px
-    }
-
-    input {
-        border: 2px solid;
-        background-color: transparent;
-        text-transform: uppercase;
-        font-size: 20px;
-        padding: 10px 20px;
-        font-weight: 300;
-        color: #4cc9f0
-    }
-
-    input:hover {
-        color: #fff;
-        border: 0;
-        background-color: #4cc9f0;
-        -webkit-box-shadow: 10px 10px 99px 6px rgba(76, 201, 240, 1);
-        -moz-box-shadow: 10px 10px 99px 6px rgba(76, 201, 240, 1);
-        box-shadow: 10px 10px 99px 6px rgba(76, 201, 240, 1)
-    }
-</style>
 
 <body>
-    <form action='/LED' method='POST\'>LampController<input type='submit' value='turn on/off'></form>
-</body>";
+    <form action='/LED' method='POST'>
+        <div>WiFi Lamp</div>
+        <input type='submit' value='Turn On/Off'>
+    </form>
+</body>
+
+</html>
